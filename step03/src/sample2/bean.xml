@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Foo foo0 = new Foo();와 동일 설정 -->
+	<bean id="foo0" class="sample2.Foo"/>
+	
+	<!-- Foo foo1 = new Foo("테스트");와 동일 설정 -->
+	<bean id="foo1" class="sample2.Foo">
+		<constructor-arg value="테스트"/>
+	</bean>
+	
+	<!-- Foo foo1 = new Foo("테스트");와 동일 설정 <value>태그 사용 예제-->
+	<bean id="foo1_1" class="sample2.Foo">
+		<constructor-arg>
+			<value>value="테스트" 1_1</value>
+		</constructor-arg> 
+	</bean>
+	
+	<!-- Foo foo2 = new Foo(23, "Hello");와 동일 설정 -->
+	<bean id="foo2" class="sample2.Foo">
+		<constructor-arg value="23"/>
+		<constructor-arg value="Hello"/>
+	</bean>
+	
+	<!-- index를 설정할수 있다. -->
+	<bean id="foo2_2" class="sample2.Foo">
+		<constructor-arg index="0" value="23"/>
+		<constructor-arg index="1" value="Hello"/>
+	</bean>
+	
+	<!-- Foo foo3 = new Foo(25, "안녕", true);와 동일 설정 -->
+	<bean id="foo3" class="sample2.Foo">
+		<constructor-arg value="23"/>
+		<constructor-arg value="안녕"/>
+		<constructor-arg value="true"/>
+	</bean>
+	
+	<!-- Foo foo4 = new Foo(27, "Hi, Spring", false);와 동일 설정 -->
+	<bean id="foo4" class="sample2.Foo">
+		<constructor-arg index="0" type="int" value="27"/>
+		<constructor-arg index="1" type="String" value="Hi, Spring"/>
+		<constructor-arg index="2" type="boolean" value="false"/>
+	</bean>
+	
+	<!-- Foo foo5 = new Foo(bar);와 동일 설정 -->
+	<!-- bean 객체에 전달되는 객체는, 반드시 bean 객처여야한다 -->
+	
+	<bean id="bar" class="sample2.Bar"/>
+	
+	<bean id="foo5" class="sample2.Foo">
+		<constructor-arg ref="bar"/>
+	</bean>
+	
+	
+	<!-- Foo foo6 = new Foo(bar);와 동일 설정 -->
+	<bean id="foo6" class="sample2.Foo">
+		<constructor-arg>
+			<ref bean="bar"/>
+		</constructor-arg>
+	</bean>
+
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

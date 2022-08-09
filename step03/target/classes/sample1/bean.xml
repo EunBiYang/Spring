@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="messageBean" class="sample1.MessageBeanImpl">
+		<!-- 생성자로 초기화 -->
+		<constructor-arg>
+			<value>딸기</value>
+		</constructor-arg>
+		
+		<!-- setter로 초기화 -->
+		<property name="cost">
+			<value>5000</value>
+		</property>	
+	</bean>
+
+</beans>

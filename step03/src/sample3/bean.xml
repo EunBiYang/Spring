@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- scoop : 객체생성 방식 -->
+	<!-- singleton : 객체를 1개만 만들어서 쓰겠다는 의미, scope은 원래 싱글톤이 기본값 -->
+	<!-- prototype : bean 객체 생성시마다 새로 만들어쓴다. -->
+	<bean id="userService" class="sample3.UserServiceImpl" scope="prototype"/>
+
+</beans>
