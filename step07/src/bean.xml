@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	
+	<!-- 어노테이션 설정 (기능관련 모두 읽어와서 bean객체로 생성) -->
+	<context:component-scan base-package="test1"/>
+	
+	
+	<!-- API클래스는 설정을 따로 해줘야 한다, 왜? 코드가 없으니깐 어노테이션 설정이 불가능 -->
+	<!-- DataSource 등록: 커넥션풀 설정   -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+		<property name="username" value="C##dbexam"/>
+		<property name="password" value="m1234"/>
+	</bean>
+	
+	<!-- Spring jdbc 설정 -->
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+
+</beans>
