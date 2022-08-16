@@ -10,7 +10,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<!-- DataSource 커넥션풀 설정 -->
 	<environments default="development">
 		<environment id="development">
-			<!-- tyep => JDBC : 수동 커밋, MANAGED : 자동 커밋 -->
+			<!-- tyep => JDBC : 수동 커밋, MANAGED : 자동 커밋   -->
 			<transactionManager type="MANAGED" />
 			<dataSource type="POOLED">
 				<property name="driver" value="${jdbc.driverClassName}" />
