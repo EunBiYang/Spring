@@ -3,14 +3,13 @@
 PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-
-	<!--  properties 파일 설정 -->
+	<!-- properties 파일 설정 -->
 	<properties resource="db.properties"/>
-	
-	<!-- DataSource 커넥션풀 설정 -->
+
+	<!-- DataSource 설정 -->
 	<environments default="development">
 		<environment id="development">
-			<!-- tyep => JDBC : 수동 커밋, MANAGED : 자동 커밋   -->
+			<!-- JDBC: 수동 커밋, MANAGED : 자동 커밋 -->
 			<transactionManager type="MANAGED" />
 			<dataSource type="POOLED">
 				<property name="driver" value="${jdbc.driverClassName}" />
@@ -21,10 +20,9 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		</environment>
 	</environments>
 	
-	
 	<!-- SQL Mapper 설정 -->
 	<mappers>
 		<mapper resource="goods-mapping.xml" />
 	</mappers>
-	
 </configuration>
+

@@ -5,7 +5,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
-	<!-- 어노테이션 설정코드 -->
+	<!-- 어노테이션 설정 -->
 	<context:component-scan base-package="test02"/>
 	
 	<!-- properties 파일 경로 설정 -->
@@ -29,5 +29,13 @@
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sessionFactory"/>
 	</bean>
-	
 </beans>
+
+
+
+
+
+
+
+
+

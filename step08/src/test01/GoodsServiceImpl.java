@@ -5,13 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 @Service("goodsService")
 public class GoodsServiceImpl implements GoodsService{
-	
 	@Autowired
 	GoodsDAO dao;
-	
+
 	@Override
 	public int insertGoods(GoodsVO vo) {
 		return dao.insertGoods(vo);
@@ -33,8 +31,7 @@ public class GoodsServiceImpl implements GoodsService{
 	}
 
 	@Override
-	public List<GoodsVO> getGoodList() {
-		return dao.getGoodList();
+	public List<GoodsVO> getGoodsList() {
+		return dao.getGoodsList();
 	}
-
 }

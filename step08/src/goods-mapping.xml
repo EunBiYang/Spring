@@ -2,32 +2,28 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
 <mapper namespace="mybatis.goodsMapper">
-	<!-- parameterType : 함수의 매개변수 값과 동일, sql문 #{여기} 들어갈 데이터의 타입 
-		 resultType : 리턴 받을 값	-->
+	<!-- parameterType : 데이터가 들어갈 자리에 삽입될 데이터의 자료형 -->
 	<insert id="insertGoods" parameterType="test01.GoodsVO">
-		<!-- 데이터 삽입 자리 : #{변수명} -->
 		insert into goods values (#{code}, #{name}, #{price}, #{maker})
-	</insert>
+	</insert> <!-- 데이터 삽입 자리 : #{변수명} -->
 	
 	<update id="updateGoods" parameterType="test01.GoodsVO">
-		update goods set name=#{name}, price=#{price}, maker=#{maker} where code=#{code}
+		update goods set name=#{name}, price=#{price}, maker=#{maker}
+		where code=#{code}
 	</update>
 	
 	<delete id="deleteGoods" parameterType="String">
 		delete goods where code=#{code}
 	</delete>
-	
 	<!-- resultType : 리턴값의 자료형을 나타냄 -->
 	<select id="getGoods" parameterType="String" resultType="test01.GoodsVO">
 		select * from goods where code=#{code}
 	</select>
-	
 	<!-- resultType : 리스트에 저장될 자료형을 나타냄 -->
-	<select id="getGoodList" resultType="test01.GoodsVO">
+	<select id="getGoodsList" resultType="test01.GoodsVO">
 		select * from goods order by code asc
 	</select>
 </mapper>
 
-	
+
