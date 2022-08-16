@@ -1,0 +1,47 @@
+-- Storeboard 테이블
+-- 1) 테이블 생성
+create table storeboard (
+    seq number not null,                    -- 글번호
+    storeName varchar2(100) not null,        -- 가게이름
+    storePlace varchar2(1000) not null,             -- 가게위치
+    storeNum number not null,               -- 가게 전화번호
+    storeCategory varchar2(20) not null,   -- 가게 카테고리
+    storeContent varchar2(4000) not null,   -- 가게소개
+    image1 varchar2(200),                   -- 이미지이름
+    logtime date default sysdate            -- 작성일
+);
+-- 2) 테이블 삭제
+drop table storeboard purge;
+-- 3) 테이블 목록 확인
+select * from tab;
+
+-- 4) 시퀀스 객체 생성
+create sequence seq_storeboard nocache nocycle;
+-- 5) 시퀀스 객체 삭제
+drop sequence seq_storeboard;
+-- 6) 정의된 시퀀스 조회
+select * from user_storeboard;
+
+-- 7) 데이터 저장 (insert)
+insert into storeboard values (seq_storeboard.nextval, '투썸플레이스', '경기 남양주시 와부읍 월문천로 115',
+0315774447, '카페', '맛있는 케이크', 'TWOSOME.jpg', sysdate);
+
+-- 8) 데이터 검색 (select)
+select * from storeboard;
+select * from storeboard where seq=1;
+
+-- 9) 데이터 삭제
+delete storeboard where seq=1;
+
+-- 10) DB 저장
+commit;
+
+-- 11) 인덱스뷰
+-- => 행번호(RowNum, 인덱스) 기준으로 데이터를 얻어오는 것
+select * from
+(select rownum rn, tt.* from
+(select * from storeboard order by seq desc) tt)
+where rn>=1 and rn<=5;
+
+-- 12) 총데이터갯수 확인
+select count(*) as cnt from storeboard;

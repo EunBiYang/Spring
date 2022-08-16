@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="mybatis.storeboardMapper">
+
+
+<insert parameterType="dto" id="storeboardWrite">
+<!-- 앞에서 지은 별명!dto -->
+insert into storeboard values(seq_board.nextval,#{storeName},#{storePlace},#{storeNum},#{storeCategory},#{storeContent},#{image1},sysdate) 
+</insert>
+
+
+<select id="getTotalA" resultType="int">
+select count(*) as cnt from storeboard 
+</select>
+
+
+<select parameterType="java.util.Map" id="storeboardList" resultType="dto">
+ <![CDATA[select seq, storeName, storePlace, storeNum, storeCategory,storeContent,image1,
+		to_char(logtime, 'YYYY.MM.DD') as logtime from 
+		(select rownum rn, tt.* from 
+		(select * from storeboard order by seq desc)tt)
+		 where rn>=#{startNum} and rn<=#{endNum}]]>
+</select>
+</mapper>
