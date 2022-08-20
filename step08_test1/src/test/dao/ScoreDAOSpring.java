@@ -1,6 +1,5 @@
 package test.dao;
 
-
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -11,30 +10,27 @@ import test.bean.ScoreVO;
 
 @Repository("dao")
 public class ScoreDAOSpring {
-	
 	@Autowired
-	private SqlSessionTemplate sqlSessionTemplate;
+	private SqlSessionTemplate sqlSession;
 	
-	
-	public int insert_score(ScoreVO vo) {
-		return sqlSessionTemplate.insert("mybatis.scoreMapper.insert_score",vo);
+	//성적 등록
+	public int insertScore(ScoreVO vo) {		
+		return sqlSession.insert("mybatis.scoreMapper.insertScore",vo);
 	}
-	
-	public int update_score(ScoreVO vo) {
-		return sqlSessionTemplate.update("mybatis.scoreMapper.update_score",vo);
+	//성적 수정
+	public int updateScore(ScoreVO vo) {
+		return sqlSession.update("mybatis.scoreMapper.updateScore", vo);
 	}
-	
-	public int delete_score(String studNo) {
-		return sqlSessionTemplate.delete("mybatis.scoreMapper.delete_score",studNo);
+	//성적 삭제
+	public int deleteScore(String studNo) {
+		return sqlSession.delete("mybatis.scoreMapper.deleteScore",studNo);
 	}
-	
-	public ScoreVO get_score(String studNo) {
-		return sqlSessionTemplate.selectOne("mybatis.scoreMapper.get_score",studNo);
+	//성적 상세 조회
+	public ScoreVO getScore(String studNo) {		
+		return sqlSession.selectOne("mybatis.scoreMapper.getScore",studNo);		
 	}
-	
-	public List<ScoreVO> get_scorelist() {
-				
-		return sqlSessionTemplate.selectList("mybatis.scoreMapper.get_scorelist");
+	//성적 목록 조회
+	public List<ScoreVO> getScoreList() {
+		return sqlSession.selectList("mybatis.scoreMapper.getScoreList");
 	}
-
 }

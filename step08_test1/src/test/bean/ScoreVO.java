@@ -12,9 +12,11 @@ public class ScoreVO {
 	
 	@Override
 	public String toString() {
-		String result= String.format("%s\t%s\t%s\t%s\t%s\t%s\t%s",studNo, name,kor,eng,mat,tot,avg,logtime) ;
+		String result=String.format("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s",
+				studNo, name, kor,eng,mat,tot,avg,logtime);
 		return result;
 	}
+	
 	public String getStudNo() {
 		return studNo;
 	}

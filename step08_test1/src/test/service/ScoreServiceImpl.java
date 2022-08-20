@@ -9,35 +9,33 @@ import test.bean.ScoreVO;
 import test.dao.ScoreDAOSpring;
 
 @Service("scoreService")
-public class ScoreServiceImpl implements ScoreService {
+public class ScoreServiceImpl implements ScoreService{
+	
 	@Autowired
 	ScoreDAOSpring dao;
-	
+
 	@Override
-	public int insert_score(ScoreVO vo) {
-		return dao.insert_score(vo);
+	public int insertScore(ScoreVO vo) {		
+		return dao.insertScore(vo);
 	}
 
 	@Override
-	public int update_score(ScoreVO vo) {
-		return dao.update_score(vo);
+	public int updateScore(ScoreVO vo) {		
+		return dao.updateScore(vo);
 	}
 
 	@Override
-	public int delete_score(String studNo) {
-		return dao.delete_score(studNo);
-	}
-	
-	@Override
-	public ScoreVO get_score(String studNo) {
-		return dao.get_score(studNo);
+	public int deleteScore(String studNo) {		
+		return dao.deleteScore(studNo);
 	}
 
 	@Override
-	public List<ScoreVO> get_scorelist() {
-		return dao.get_scorelist();
+	public ScoreVO getScore(String studNo) {		
+		return dao.getScore(studNo);
 	}
 
-	
-
+	@Override
+	public List<ScoreVO> getScoreList() {		
+		return dao.getScoreList();
+	}
 }
